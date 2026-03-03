@@ -1,3 +1,4 @@
+
 # Commandes Angular CLI
 
 Ce document récapitule les commandes principales de l'Angular CLI avec une courte description, un exemple d'utilisation et des remarques utiles.
@@ -31,7 +32,7 @@ Si tu veux, j'ajoute une section avec des flags courants (`--prod`, `--configura
 
 | Syntaxe | Description |
 |---|---|
-| `<p>Hello {{ponyName}}</p>` | Affiche `Hello poney1` si `ponyName` vaut `"poney1"`. |
+| `<p>Hello {{ponyName}}</p>` | Affiche `Hello poney1` si `ponyName` vaut "poney1". |
 | `<p>Fournisseur: {{provider?.companyName}}</p>` | Utilise l'opérateur safe navigation `?.` : pas d'exception si `provider` est `undefined`, l'affichage est simplement ignoré. |
 | `name: {{name \| upperCase}}` | Utilise un `pipe` (`upperCase`) pour transformer la valeur avant affichage. Les pipes peuvent être chaînés. |
 | `<input [value]="firstName">` | Liaison unidirectionnelle : affecte la valeur de l'expression `firstName` à la propriété DOM `value`. |
@@ -39,4 +40,30 @@ Si tu veux, j'ajoute une section avec des flags courants (`--prod`, `--configura
 | `<div [style.width.px]="mySize">` | Liaison de style : affecte `mySize` à la largeur en pixels (`width`). |
 | `<button (click)="onEventXy($event)">` | Gestionnaire d'événement : appelle `onEventXy()` et transmet l'objet `$event` (par ex. `MouseEvent`). |
 | `<input [(ngModel)]="userName">` | Liaison bidirectionnelle (`Two-way binding`) : met à jour `userName` à chaque saisie et met la valeur dans l'input. |
+
+
+---
+
+## Directives Angular courantes
+
+| Directive | Type | Exemple | Description / Remarques |
+|---|---|---|---|
+| `*ngIf="expr"` | Structurelle | `<div *ngIf="user.isAdmin">Admin</div>` | Insère/retire l'élément du DOM selon `expr`. Supporte une syntaxe `else` : `*ngIf="expr; else elseTpl"` et `<ng-template #elseTpl>...` |
+| `*ngFor="let item of items; index as i; trackBy: trackByFn"` | Structurelle | `<li *ngFor="let p of produits; index as i">{{i}} - {{p.name}}</li>` | Itère sur une collection. Utiliser `trackBy` pour optimiser le rendu et éviter les recréations DOM inutiles. |
+| `[ngSwitch]` / `*ngSwitchCase` / `*ngSwitchDefault` | Structurelle | `<div [ngSwitch]="mode"><p *ngSwitchCase="'list'">Liste</p><p *ngSwitchDefault>Autre</p></div>` | Choix entre plusieurs blocs selon la valeur évaluée. |
+| `[ngClass]` | Attributaire | `<div [ngClass]="{active: selected, error: hasError}">` | Ajoute ou retire des classes CSS dynamiquement (chaîne, tableau ou objet). |
+| `[ngStyle]` | Attributaire | `<p [ngStyle]="{color: isError ? 'red' : 'black'}">` | Applique des styles en ligne dynamiquement via un objet. |
+| `[(ngModel)]` | Directive (Forms) | `<input [(ngModel)]="name">` | Liaison bidirectionnelle pour formulaires. Nécessite `FormsModule` (ou `ReactiveFormsModule` pour Reactive Forms). |
+| `<ng-container *ngIf="...">` | Conteneur invisible | `<ng-container *ngIf="items.length">...</ng-container>` | Conteneur logique qui n'ajoute pas d'élément DOM supplémentaire (utile pour grouper plusieurs éléments). |
+| `<ng-template>` / `*ngTemplateOutlet` | Template / structure | `<ng-template #row let-item>...</ng-template>
+<ng-container *ngTemplateOutlet="row; context: { $implicit: produit }"></ng-container>` | Permet de définir des templates réutilisables et de les instancier dynamiquement avec un contexte. |
+
+**Remarques rapides**
+
+- Les directives structurelles utilisent le préfixe `*` (ex. `*ngIf`, `*ngFor`) et modifient la structure du DOM.
+- Les directives attributaires modifient l'apparence ou le comportement d'un élément existant (`[ngClass]`, `[ngStyle]`, etc.).
+- Pour `[(ngModel)]`, importe `FormsModule` dans le module (ou déclare le composant `standalone: true` et ajoute `FormsModule` dans `imports`).
+- Utilise `trackBy` dans `*ngFor` pour améliorer les performances sur de grandes listes.
+
+Si tu veux, j'ajoute des exemples plus détaillés (avec `trackBy`, `else` pour `ngIf`, ou gestion des formulaires réactifs).
 
