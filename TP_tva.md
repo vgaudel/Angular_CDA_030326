@@ -11,3 +11,9 @@ Coder de A à Z le composant src/app/basic/tva
     ![alt text]({C697164B-907F-47A4-9EB2-60E2B543C912}.png)
 
 Votre mise en page devra être plus belle que celle proposée !
+
+
+## Exercice Bonus : 
+
+Ajouter, dans le component couleur, la possibilité d'ajouter de nouvelles couleurs à la liste des couleurs proposées.
+Attention : il faudra bien vérifier que la couleur proposée par l'utilisateur est une couleur acceptée dans le css.
