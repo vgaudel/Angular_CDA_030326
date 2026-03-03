@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-calculatrice',
-  imports: [FormsModule ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './calculatrice.html',
   styleUrl: './calculatrice.css',
 })
@@ -11,6 +12,9 @@ export class Calculatrice {
   a : number = 0;
   b : number = 0;
   res : number = 0;
+
+  montrerHistorique : boolean = true;
+  historiqueCalculs : string[] = [];
 
   onCalculer(op : string){
     switch(op){
@@ -23,6 +27,23 @@ export class Calculatrice {
       default :
         this.res = 0;
     }
+    this.historiqueCalculs.push(`${this.a}  ${op} ${this.b} = ${this.res}`)
+  }
+
+  x:number=0;
+  y:number=0;
+
+  onMouseMove(evt : MouseEvent){
+
+    let currentDiv : HTMLElement = <HTMLElement> evt.target;
+
+    this.x = evt.pageX - currentDiv.offsetLeft;
+    this.y = evt.pageY - currentDiv.offsetTop;
+  }
+
+  onMouseLeave(evt : MouseEvent){
+    this.x=0;
+    this.y=0;
   }
 
 }
