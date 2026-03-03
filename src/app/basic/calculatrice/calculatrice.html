@@ -1,0 +1,15 @@
+<div class="c1">
+    <h3>Calculatrice Angular</h3>
+
+<label>a:</label><input type="number" [(ngModel)]="a"> <br>
+<label>b:</label><input type="number" [(ngModel)]="b"> <br>
+
+<label> résultat : </label>
+<span [style.font-weight]="res>0?'bold':'normal'" 
+      [class.negatif]="res<0"> {{res}} </span> <br>
+
+<button  (click)="onCalculer('+')">+ (add)</button>
+<button  (click)="onCalculer('-')">- (diff)</button>
+<button  (click)="onCalculer('*')">* (mult)</button>
+
+</div>
