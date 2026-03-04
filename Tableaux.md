@@ -65,5 +65,5 @@ Si tu veux, j'ajoute une section avec des flags courants (`--prod`, `--configura
 - Pour `[(ngModel)]`, importe `FormsModule` dans le module (ou déclare le composant `standalone: true` et ajoute `FormsModule` dans `imports`).
 - Utilise `trackBy` dans `*ngFor` pour améliorer les performances sur de grandes listes.
 
-Si tu veux, j'ajoute des exemples plus détaillés (avec `trackBy`, `else` pour `ngIf`, ou gestion des formulaires réactifs).
+
 

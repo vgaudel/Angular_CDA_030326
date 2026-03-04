@@ -1,13 +1,22 @@
-<p>basic works!</p>
-
-username: <input [(ngModel)]="username"> 
-
-{{username}}
+<label *ngFor="let c of listeComponents" (click)="onSelectedComponent(c)" [class.selected]="c==myComponent">{{c}}
+</label>
 <br>
-<button [style.color]="couleurBouton" (click)="onAction()">Hello</button>
+<hr>
 <br>
 
-message : <b>{{message}}</b>
-<app-calculatrice />
-<app-couleur />
-<app-produits />
+<div [ngSwitch]="myComponent">
+    <app-calculatrice *ngSwitchCase="'Calculatrice'" />
+    <app-couleur *ngSwitchCase="'Couleur'" />
+    <app-produits *ngSwitchCase="'Produits'" />
+    <app-tva *ngSwitchCase="'Tva'" />
+    <div *ngSwitchDefault>
+        username: <input [(ngModel)]="username">
+
+        {{username}}
+        <br>
+        <button [style.color]="couleurBouton" (click)="onAction()">Hello</button>
+        <br>
+
+        message : <b>{{message}}</b>
+    </div>
+</div>

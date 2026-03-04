@@ -19,4 +19,7 @@ input {
   margin-bottom: .8rem;
   border: 1px solid #ccc;
 }
-
+.selected {
+  color: #2b6cb0;
+  font-weight: 600;
+}

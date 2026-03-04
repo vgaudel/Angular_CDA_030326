@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+}
+
+label {
+  display: inline-block;
+  width: 120px;
+  color: #333;
+  margin-top: .5rem;
+}
+
+select, input[type="text"] {
+  width: calc(100% - 130px);
+  padding: .4rem;
+  margin-bottom: .8rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+input[type="button"] {
+  padding: .5rem 1rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background: #218838;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+table th,
+table td {
+  padding: .5rem;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background: #f2f2f2;
+}
