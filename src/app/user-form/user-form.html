@@ -1,0 +1,40 @@
+<!--
+        user.id 
+        user.username 
+        user.firstname 
+        user.lastname
+        user.email
+        user.newPassword 
+        user.mainGroup
+        -->
+<form #formUser="ngForm">
+    <label> id </label> {{user.id}} <br>
+    <label> username </label>
+    <input name="username" [(ngModel)]="user.userName" required pattern="^[a-zA-Z].+" #usernameFormCtrl="ngModel"/><br>
+        <div [hidden]="usernameFormCtrl.valid">
+            username is required
+        </div>
+    <label> firstname </label>
+    <input name="firstname" [(ngModel)]="user.firstName" /> <br />
+    <label> lastname </label>
+    <input name="lastname" [(ngModel)]="user.lastName" /> <br />
+    <label> email </label> 
+    <input name="email" [(ngModel)]="user.email" 
+    required 
+    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    #emailFormCtrl="ngModel"/> <br />
+         <div [hidden]="emailFormCtrl.valid">
+            A valid email is required
+        </div>
+    <label> newPassword </label>
+    <input name="newpassword" [(ngModel)]="user.newPassword" required minlength="3"> <br />
+    <label> mainGroup </label>
+    <select name="mainGroup" [(ngModel)]="user.mainGroup">
+        <option>user</option>
+        <option>manager</option>
+        <option>admin</option>
+    </select> <br>
+    <button (click)="onSave()"> Save</button> &nbsp;
+    <button (click)="onFetchFromUsername()"> Fetch From Username </button> <br />
+</form>
+message: {{message}}

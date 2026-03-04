@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { Basic } from './basic/basic';
+import { UserForm } from './user-form/user-form';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Footer, Basic],
+  imports: [Header, Footer, Basic, UserForm],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

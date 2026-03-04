@@ -66,4 +66,11 @@ Si tu veux, j'ajoute une section avec des flags courants (`--prod`, `--configura
 - Utilise `trackBy` dans `*ngFor` pour améliorer les performances sur de grandes listes.
 
 
+## États des formulaires Angular
+
+| État | Flag (booléen) | Classe CSS si true | Classe CSS si false |
+|---|---|---|---|
+| Champ visité (souris entrée et sortie) | `touched` | `ng-touched` | `ng-untouched` |
+| Valeur du champ modifié | `dirty` | `ng-dirty` | `ng-pristine` |
+| Valeur du champ valide | `valid` | `ng-valid` | `ng-invalid` |
 
