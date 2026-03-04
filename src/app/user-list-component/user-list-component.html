@@ -1,0 +1,12 @@
+<h2> Liste des utilisateurs </h2>
+
+<p *ngIf="users.length ===0"> Aucun utilisateur trouvé </p>
+
+<div *ngIf="users.length>0">
+
+    <strong> {{users[0].firstName}} {{users[0].lastName}} </strong>
+    <div> @{{users[0].userName}} </div>
+    <div> {{users[0].email}} </div>
+    <small> {{users[0].mainGroup}} </small>
+ 
+</div>

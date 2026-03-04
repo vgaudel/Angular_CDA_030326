@@ -7,7 +7,7 @@ import { UserForm } from './user-form/user-form';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Footer, Basic, UserForm],
+  imports: [Header, Footer, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
