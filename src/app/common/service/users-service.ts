@@ -1,7 +1,13 @@
-import { User } from './user';
+import { Injectable } from '@angular/core';
+import { User } from '../data/user';
 
-export class UserList {
-  private users: User[] = [
+@Injectable({
+  providedIn: 'root',
+})
+export class UsersService {
+
+
+ private users: User[] = [
     new User('1', 'jdoe', 'John', 'Doe', 'john.doe@example.com', 'pass123', 'user'),
     new User('2', 'asmith', 'Alice', 'Smith', 'alice.smith@example.com', 'pass456', 'manager'),
     new User('3', 'bjones', 'Bob', 'Jones', 'bob.jones@example.com', 'pass789', 'user'),
@@ -89,5 +95,4 @@ export class UserList {
 
 }
 
-// Instance statique (singleton) pour utilisation globale
-export const userListManager = new UserList();
+

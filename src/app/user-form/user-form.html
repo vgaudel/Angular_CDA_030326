@@ -7,34 +7,71 @@
         user.newPassword 
         user.mainGroup
         -->
-<form #formUser="ngForm">
-    <label> id </label> {{user.id}} <br>
-    <label> username </label>
-    <input name="username" [(ngModel)]="user.userName" required pattern="^[a-zA-Z].+" #usernameFormCtrl="ngModel"/><br>
-        <div [hidden]="usernameFormCtrl.valid">
+<form #formUser="ngForm"><!--  -->
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">id:</label>
+        <div class="col-sm-8">{{user.id}}</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">username:</label>
+        <div class="col-sm-6">
+            <input [(ngModel)]="user.userName" name="username" class="form-control  mb-1" required pattern="[a-zA-Z].+"
+                #usernameFormCtrl="ngModel">
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-6" [hidden]="usernameFormCtrl.valid">
             username is required
         </div>
-    <label> firstname </label>
-    <input name="firstname" [(ngModel)]="user.firstName" /> <br />
-    <label> lastname </label>
-    <input name="lastname" [(ngModel)]="user.lastName" /> <br />
-    <label> email </label> 
-    <input name="email" [(ngModel)]="user.email" 
-    required 
-    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-    #emailFormCtrl="ngModel"/> <br />
-         <div [hidden]="emailFormCtrl.valid">
-            A valid email is required
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">firstName:</label>
+        <div class="col-sm-6">
+            <input [(ngModel)]="user.firstName" name="firstName" class="form-control  mb-1" pattern="[a-zA-Z].+">
         </div>
-    <label> newPassword </label>
-    <input name="newpassword" [(ngModel)]="user.newPassword" required minlength="3"> <br />
-    <label> mainGroup </label>
-    <select name="mainGroup" [(ngModel)]="user.mainGroup">
-        <option>user</option>
-        <option>manager</option>
-        <option>admin</option>
-    </select> <br>
-    <button (click)="onSave()"> Save</button> &nbsp;
-    <button (click)="onFetchFromUsername()"> Fetch From Username </button> <br />
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">lastName:</label>
+        <div class="col-sm-6">
+            <input [(ngModel)]="user.lastName" name="lastName" class="form-control  mb-1" pattern="[a-zA-Z].+">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">email:</label>
+        <div class="col-sm-6">
+            <input [(ngModel)]="user.email" name="email" class="form-control  mb-1" required
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">newPassword:</label>
+        <div class="col-sm-6">
+            <input [(ngModel)]="user.newPassword" name="newPpassword" placeholder="at least 3 characters"
+                type="password" class="form-control  mb-1" minlength="3">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 text-sm-end">mainGroup:</label>
+        <div class="col-sm-6">
+            <select [(ngModel)]="user.mainGroup" class="form-control mb-1" name="mainGroup">
+                <option>user</option>
+                <option>manager</option>
+                <option>admin</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 offset-sm-4">
+            <button class="btn btn-primary" (click)="onSave()" [disabled]="!formUser.form.valid">
+                Save <span class="badge badge-primary">
+                    <i class="bi-person"></i>
+                </span>
+            </button> &nbsp;
+            <button class="btn btn-primary" (click)="onFetchFromUsername()" [disabled]="!usernameFormCtrl.valid">
+                Fetch From Username
+            </button>
+        </div>
+    </div>
 </form>
-message: {{message}}
+<div class="offset-sm-4 col-sm-6">
+    message: {{message}}
+</div>

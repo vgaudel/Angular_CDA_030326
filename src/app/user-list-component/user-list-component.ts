@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { UserList, userListManager } from '../common/data/userList';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../common/data/user';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../common/service/users-service';
 
 @Component({
   selector: 'app-user-list-component',
@@ -12,16 +12,21 @@ import { CommonModule } from '@angular/common';
 })
 export class UserListComponent {
 
-  private ulm : UserList = userListManager;
-  public users : User[] = [];
 
-  constructor(route: ActivatedRoute){
+  public users: User[] = [];
 
-      const id: string = route.snapshot.params['id'];
-       
-      let usr = this.ulm.getUserById(id);
-      if (usr){this.users.push(usr);}
-      
+  constructor(route: ActivatedRoute, private _ulm: UsersService) {
+
+    const id: string = route.snapshot.params['id'];
+
+    if (id === 'all') {
+      this.users = this._ulm.getAllUsers();
+    } else {
+      let usr = this._ulm.getUserById(id);
+      if (usr) { this.users.push(usr); }
+    }
 
   }
+
 }
+

@@ -2,11 +2,16 @@
 
 <p *ngIf="users.length ===0"> Aucun utilisateur trouvé </p>
 
-<div *ngIf="users.length>0">
 
-    <strong> {{users[0].firstName}} {{users[0].lastName}} </strong>
-    <div> @{{users[0].userName}} </div>
-    <div> {{users[0].email}} </div>
-    <small> {{users[0].mainGroup}} </small>
- 
+<div *ngIf="users.length > 0">
+  <div class="row">
+    <div class="card col-xl-4 col-md-6 col-12" *ngFor="let user of users">
+      <div class="card-body" >
+        <strong>{{ user.firstName }} {{ user.lastName }}</strong>
+        <div>@{{ user.userName }}</div>
+        <div>{{ user.email }}</div>
+        <small>{{ user.mainGroup }}</small>
+      </div>
+    </div>
+  </div>
 </div>

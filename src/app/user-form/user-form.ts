@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { User } from '../common/data/user';
-import { userListManager } from '../common/data/userList';
+import { UsersService } from '../common/service/users-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -14,16 +15,23 @@ export class UserForm {
 
     public user : User = new User();
     public message : string = ""; 
-    private ulm = userListManager;
 
     public onSave(){
-      this.ulm.addUser(this.user) ;
+      this._ulm.addUser(this.user) ;
       this.message = "user =" + JSON.stringify(this.user);
-      console.log(JSON.stringify(this.ulm.getAllUsers()))
+      console.log(JSON.stringify(this._ulm.getAllUsers()));
+      //this._router.navigateByUrl('/users/all');
+      let link = ['/users', this.user.id];
+      this._router.navigate(link);
     }
 
     public onFetchFromUsername(){
-      //TODO
+      this.user = this._ulm.getUserByuserName(this.user.userName) ?? new User();
+      if (!this._ulm.userExists(this.user.id)){
+        this.message="utilisateur inexistant";
+      }
     }
+
+  constructor(private _ulm : UsersService, private _router: Router){} 
 
 }

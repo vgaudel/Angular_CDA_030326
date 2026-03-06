@@ -5,6 +5,7 @@
             <li *ngFor="let c of listeCategories"
             (click)="onSelectCategorie(c)"
             [class.selected]="c==categorie"> {{c}} </li>
+            <!--[class.selected]="c==categorie" est un binding de style-->>
         </ul>
     </div>
     <div class="myColItem" *ngIf="categorie">
