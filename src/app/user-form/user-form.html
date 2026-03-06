@@ -18,8 +18,8 @@
             <input [(ngModel)]="user.userName" name="username" class="form-control  mb-1" required pattern="[a-zA-Z].+"
                 #usernameFormCtrl="ngModel">
         </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-6" [hidden]="usernameFormCtrl.valid">
+        
+        <div class="col-sm-6 offset-sm-4" [hidden]="usernameFormCtrl.valid">
             username is required
         </div>
     </div>
