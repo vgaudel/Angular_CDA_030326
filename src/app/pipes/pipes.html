@@ -1,0 +1,19 @@
+<h2>Exemples de Pipes Angular</h2>
+
+<p>Date : {{ today | date:'fullDate' }}</p>
+<p>Uppercase : {{ text | uppercase }}</p>
+<p>Lowercase : {{ text | lowercase }}</p>
+<p>Titlecase : {{ text | titlecase }}</p>
+<p>Currency : {{ amount | currency:'EUR' }}</p>
+<p>Percent : {{ ratio | percent }}</p>
+<p>Decimal (number) : {{ amount | number:'1.2-2' }}</p>
+<p>Json : {{ user | json }}</p>
+<p>Slice (string) : {{ text | slice:0:7 }}</p>
+<p>Slice (tableau) : {{ items | slice:1:3 | json }}</p>
+
+<h3>KeyValue</h3>
+<ul>
+	<li *ngFor="let color of cssColors | keyvalue">
+		{{ color.key }} : {{ color.value }}
+	</li>
+</ul>
